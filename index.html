@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{box-sizing: border-box;}
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+  </head>
+  <body>
+    <picture>
+      <source
+        media="(min-width: 991px)"
+        srcset="
+          https://res.cloudinary.com/spiralyze/image/upload/f_auto/Testing%20images%28Yuriy%29/desktop-image1x.png 1x,
+          https://res.cloudinary.com/spiralyze/image/upload/f_auto/Testing%20images%28Yuriy%29/desktop-image2x.png 2x
+        "
+      />
+      <source
+        media="(min-width: 768px)"
+        srcset="
+          https://res.cloudinary.com/spiralyze/image/upload/f_auto/Testing%20images%28Yuriy%29/tablet-image1x.png 1x,
+          https://res.cloudinary.com/spiralyze/image/upload/f_auto/Testing%20images%28Yuriy%29/tablet-image2x.png 2x
+        "
+      />
+      <source
+        media="(min-width: 320px)"
+        srcset="
+          https://res.cloudinary.com/spiralyze/image/upload/f_auto/Testing%20images%28Yuriy%29/mobile-image1x.png 1x,
+          https://res.cloudinary.com/spiralyze/image/upload/f_auto/Testing%20images%28Yuriy%29/mobile-image2x.png 2x
+        "
+      />
+      <img id="myimage" src="https://res.cloudinary.com/spiralyze/image/upload/f_auto/Testing%20images%28Yuriy%29/desktop-image2x.png" alt="Some image" loading="lazy" />
+
+      <div class="image-info">img name: <span></span></div>
+      <div class="image-info-device">pixel density: <span></span></div>
+    </picture>
+    <script>
+        window.addEventListener('resize', ()=>{
+            document.querySelector('.image-info span').innerHTML = document.getElementById('myimage').currentSrc.split('/')[document.getElementById('myimage').currentSrc.split('/').length -1]
+            document.querySelector('.image-info-device span').innerHTML = window.devicePixelRatio
+        })
+    </script>
+  </body>
+</html>
